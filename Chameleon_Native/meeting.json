@@ -1,0 +1,68 @@
+{
+    "2357" : {
+        "address" : "SO4 1F",
+        "roomName" : "SO4 1 Floor 106",
+        "meetings" : [
+                      {
+                      "meetingTitle" : "Meeting with *IIP* Client.",
+                      "startTime" : "09:00",
+                      "endTime" : "10:00",
+                      "bookBy" : "Vincent",
+                      "meetingDes" : "",
+                      "meetingID" : 1
+                      },
+                      {
+                      "meetingTitle" : "Meeting with *CIO* Client.",
+                      "startTime" : "14:00",
+                      "endTime" : "15:00",
+                      "bookBy" : "Gary",
+                      "meetingDes" : "",
+                      "meetingID" : 2
+                      },
+                      {
+                      "meetingTitle" : "Meeting with *CTO* Client.",
+                      "startTime" : "16:00",
+                      "endTime" : "16:30",
+                      "bookBy" : "Mohamed",
+                      "meetingDes" : "",
+                      "meetingID" : 3
+                      }
+                      ],
+        "type" : 1,
+        "description" : "Available now",
+        "meetingroomID" : "12345"
+    },
+    "2359" : {
+        "address" : "SO3 3F",
+        "roomName" : "SO3 3 Floor 302",
+        "meetings" : [
+                      {
+                      "meetingTitle" : "Meeting with *WeChat* Client.",
+                      "startTime" : "09:00",
+                      "endTime" : "10:00",
+                      "bookBy" : "Ivy",
+                      "meetingDes" : "",
+                      "meetingID" : 1
+                      },
+                      {
+                      "meetingTitle" : "Meeting with *Tecent* Client.",
+                      "startTime" : "14:00",
+                      "endTime" : "15:00",
+                      "bookBy" : "Frank",
+                      "meetingDes" : "",
+                      "meetingID" : 2
+                      },
+                      {
+                      "meetingTitle" : "Meeting with *Baidu* Client.",
+                      "startTime" : "16:00",
+                      "endTime" : "16:30",
+                      "bookBy" : "Summer",
+                      "meetingDes" : "",
+                      "meetingID" : 3
+                      }
+                      ],
+        "type" : 1,
+        "description" : "available at 3pm",
+        "meetingroomID" : "12346"
+    }
+}

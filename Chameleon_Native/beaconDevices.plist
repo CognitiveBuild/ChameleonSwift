@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>deviceID</key>
+		<integer>12346</integer>
+		<key>uuid</key>
+		<string>11E44F09-4EC4-407E-9203-CF57A50FBCE0</string>
+		<key>major</key>
+		<integer>0</integer>
+		<key>minor</key>
+		<integer>2357</integer>
+		<key>name</key>
+		<string>Meeting Room 105</string>
+	</dict>
+	<dict>
+		<key>uuid</key>
+		<string>11E44F09-4EC4-407E-9203-CF57A50FBCE0</string>
+		<key>major</key>
+		<integer>0</integer>
+		<key>minor</key>
+		<string>2359</string>
+		<key>name</key>
+		<string>Meeting Room 302</string>
+		<key>deviceID</key>
+		<integer>12345</integer>
+	</dict>
+</array>
+</plist>
