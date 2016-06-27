@@ -10,6 +10,7 @@ import UIKit
 
 class MeetingRoomTableViewController: UITableViewController {
 
+    @IBOutlet weak var bookButton: UIButton!
     var device = Device()
     var meetings = [Meeting]()
     
@@ -18,16 +19,23 @@ class MeetingRoomTableViewController: UITableViewController {
         //Regist cell
         self.tableView.registerNib(UINib(nibName: "TodayCell",bundle: nil), forCellReuseIdentifier: "todayCell")
         self.tableView.registerNib(UINib(nibName:"MeetingTimeCell",bundle:nil), forCellReuseIdentifier: "mtCell")
+        self.tableView.backgroundColor = UIColor(hexString: "#f0f1f3")
+
         self.title = device.roomName
         let replyBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         replyBtn.setImage(UIImage(named: "radar"), forState: UIControlState.Normal)
         replyBtn.addTarget(self, action: #selector(backToHome), forControlEvents:  UIControlEvents.TouchUpInside)
         let item = UIBarButtonItem(customView: replyBtn)
         self.navigationItem.rightBarButtonItem = item
+        self.meetings = device.meetings
+        self.bookButton.layer.cornerRadius = 25
     }
     
     func backToHome() {
         self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    @IBAction func bookMeetingAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("showBookPage", sender: device)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,51 +75,20 @@ class MeetingRoomTableViewController: UITableViewController {
         }
 
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = UIColor(hexString: "#f0f1f3")
+        v.frame = CGRectMake(0, 0, tableView.frame.size.width, 20)
+        return v
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 60
+        }else{
+            return 60
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

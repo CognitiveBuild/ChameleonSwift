@@ -1,21 +1,19 @@
 //
-//  meetingTimeCell.swift
+//  InputCell.swift
 //  Chameleon_Native
 //
-//  Created by Vincent Zhou on 6/24/16.
+//  Created by Vincent Zhou on 6/26/16.
 //  Copyright © 2016 IBM. All rights reserved.
 //
 
 import UIKit
 
-class MeetingTimeCell: UITableViewCell {
+class InputCell: UITableViewCell {
 
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var decLabel: UILabel!
+    @IBOutlet weak var meetingTitle: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

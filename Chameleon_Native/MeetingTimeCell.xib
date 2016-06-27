@@ -7,24 +7,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mtCell" id="KGk-i7-Jjw" customClass="MeetingTimeCell" customModule="Chameleon_Native" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mtCell" rowHeight="60" id="KGk-i7-Jjw" customClass="MeetingTimeCell" customModule="Chameleon_Native" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00 - 11:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="0Sz-dv-Qjv">
-                        <rect key="frame" x="8" y="11" width="100" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="YJC-cx-k6C"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JsK-Qh-1ts">
-                        <rect key="frame" x="270" y="11" width="42" height="21"/>
+                        <rect key="frame" x="270" y="19" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="yWL-HL-UeR"/>
                         </constraints>
@@ -32,14 +23,41 @@
                         <color key="textColor" red="0.58039215690000001" green="0.58039215690000001" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetingroom.png" translatesAutoresizingMaskIntoConstraints="NO" id="RZJ-H5-aWp">
+                        <rect key="frame" x="23" y="17" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="XEP-fU-FOw"/>
+                            <constraint firstAttribute="height" constant="25" id="i1n-nf-YNt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00 - 11:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="0Sz-dv-Qjv">
+                        <rect key="frame" x="56" y="19" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="YJC-cx-k6C"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="0Sz-dv-Qjv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="48" id="3Vg-pk-Q3x"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="RZJ-H5-aWp" secondAttribute="leading" constant="-15" id="3W9-Ml-802"/>
                     <constraint firstItem="JsK-Qh-1ts" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0Sz-dv-Qjv" secondAttribute="trailing" id="Koi-Qa-jIU"/>
+                    <constraint firstItem="RZJ-H5-aWp" firstAttribute="centerY" secondItem="0Sz-dv-Qjv" secondAttribute="centerY" id="PKw-yo-D1B"/>
                     <constraint firstItem="JsK-Qh-1ts" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SK3-Ye-bLb"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="0Sz-dv-Qjv" secondAttribute="leading" id="a0V-m4-r9y"/>
+                    <constraint firstItem="RZJ-H5-aWp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="V9d-Bz-SJX"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="0Sz-dv-Qjv" secondAttribute="leading" constant="-30" id="a0V-m4-r9y"/>
                     <constraint firstItem="0Sz-dv-Qjv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cqd-CV-0FA"/>
                     <constraint firstAttribute="trailingMargin" secondItem="JsK-Qh-1ts" secondAttribute="trailing" id="tA1-es-k4a"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="V9d-Bz-SJX"/>
+                        <exclude reference="a0V-m4-r9y"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="decLabel" destination="JsK-Qh-1ts" id="vmZ-0x-NDD"/>
@@ -48,4 +66,7 @@
             <point key="canvasLocation" x="270" y="168"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="meetingroom.png" width="40" height="40"/>
+    </resources>
 </document>

@@ -86,10 +86,13 @@
         <scene sceneID="xbb-Rq-D61">
             <objects>
                 <tableViewController storyboardIdentifier="ibmAreaVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wof-2T-BXT" customClass="IBMAreaTableViewController" customModule="Chameleon_Native" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="0sl-B7-Ow1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="0sl-B7-Ow1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="0.93333333330000001" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.93333333330000001" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="areaCell" rowHeight="70" id="Uf4-SA-aIT" customClass="AreaTableViewCell" customModule="Chameleon_Native" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="70"/>
@@ -121,25 +124,36 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lad-n5-n6T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="iuC-jN-UHF">
                             <rect key="frame" x="0.0" y="136" width="375" height="99"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GD-pM-WEy">
-                                    <rect key="frame" x="28" y="28" width="319" height="44"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GD-pM-WEy">
+                                    <rect key="frame" x="28" y="25" width="319" height="50"/>
                                     <color key="backgroundColor" red="0.60392156860000001" green="0.023529411760000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="PdG-OE-Mkg"/>
+                                    </constraints>
                                     <state key="normal" title="New meeting"/>
+                                    <connections>
+                                        <action selector="bookMeetingAction:" destination="1xa-IX-lTU" eventType="touchUpInside" id="Aed-W6-h6H"/>
+                                    </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="7GD-pM-WEy" firstAttribute="centerY" secondItem="iuC-jN-UHF" secondAttribute="centerY" id="d02-8k-x8n"/>
+                                <constraint firstItem="7GD-pM-WEy" firstAttribute="leading" secondItem="iuC-jN-UHF" secondAttribute="leading" constant="28" id="tdg-G4-2ZA"/>
+                                <constraint firstItem="7GD-pM-WEy" firstAttribute="centerX" secondItem="iuC-jN-UHF" secondAttribute="centerX" id="uOi-YU-0z6"/>
+                            </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bU2-IN-2Ob">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" id="bU2-IN-2Ob">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bU2-IN-2Ob" id="ZBT-L9-bgq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -149,10 +163,68 @@
                             <outlet property="delegate" destination="1xa-IX-lTU" id="tln-4U-XIx"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="bookButton" destination="7GD-pM-WEy" id="IFD-kO-fRX"/>
+                        <segue destination="kOH-Ku-TkQ" kind="show" identifier="showBookPage" id="fbU-7N-iEL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VX6-ln-Xxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2674.5" y="724.5"/>
+        </scene>
+        <!--Book Meeting Table View Controller-->
+        <scene sceneID="zdQ-tF-pcJ">
+            <objects>
+                <tableViewController id="kOH-Ku-TkQ" customClass="BookMeetingTableViewController" customModule="Chameleon_Native" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ea4-Dj-d8H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="N44-64-89U">
+                            <rect key="frame" x="0.0" y="136" width="375" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Stm-Bp-RFS">
+                                    <rect key="frame" x="28" y="25" width="319" height="50"/>
+                                    <color key="backgroundColor" red="0.60392156860000001" green="0.023529411760000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="7dR-KE-Y8g"/>
+                                    </constraints>
+                                    <state key="normal" title="Book"/>
+                                    <connections>
+                                        <action selector="bookAction:" destination="kOH-Ku-TkQ" eventType="touchUpInside" id="t5V-bg-NSt"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Stm-Bp-RFS" firstAttribute="centerY" secondItem="N44-64-89U" secondAttribute="centerY" id="8B2-Vw-ZuO"/>
+                                <constraint firstAttribute="trailing" secondItem="Stm-Bp-RFS" secondAttribute="trailing" constant="28" id="BDO-6d-Hfo"/>
+                                <constraint firstItem="Stm-Bp-RFS" firstAttribute="leading" secondItem="N44-64-89U" secondAttribute="leading" constant="28" id="fvM-LN-L7p"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qgm-Jw-3PX">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgm-Jw-3PX" id="BLn-sO-e7D">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kOH-Ku-TkQ" id="qXF-kf-ZYu"/>
+                            <outlet property="delegate" destination="kOH-Ku-TkQ" id="7xo-cX-QG5"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="bookButton" destination="Stm-Bp-RFS" id="SOM-O5-92T"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lV-eV-aFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3172.5" y="724.5"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="cvr-Zs-oON">
@@ -229,7 +301,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVD-Ls-nXl" customClass="JiroTextField" customModule="Chameleon_Native" customModuleProvider="target">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="zhouhdl@cn.ibm.com" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVD-Ls-nXl" customClass="JiroTextField" customModule="Chameleon_Native" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="0.0" width="335" height="69"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -262,7 +334,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OTD-XR-xr0" customClass="JiroTextField" customModule="Chameleon_Native" customModuleProvider="target">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="000000" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OTD-XR-xr0" customClass="JiroTextField" customModule="Chameleon_Native" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="0.0" width="335" height="69"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
