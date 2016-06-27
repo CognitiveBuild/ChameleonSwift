@@ -76,14 +76,17 @@ class MeetingRoomTableViewController: UITableViewController {
 
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let v = UIView()
-        v.backgroundColor = UIColor(hexString: "#f0f1f3")
-        v.frame = CGRectMake(0, 0, tableView.frame.size.width, 20)
-        return v
+        if section == 0 {
+            return nil
+        }else{
+            let v = UIView()
+            v.backgroundColor = UIColor(hexString: "#f0f1f3")
+            v.frame = CGRectMake(0, 0, tableView.frame.size.width, 20)
+            return v
+        }
+
     }
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
+
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 60

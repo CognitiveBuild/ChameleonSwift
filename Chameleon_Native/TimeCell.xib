@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:39" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ7-xT-26P">
-                        <rect key="frame" x="265" y="19" width="47" height="21"/>
+                        <rect key="frame" x="107" y="19" width="47" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="syb-J4-W0o"/>
                         </constraints>
@@ -34,12 +34,19 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="BJ7-xT-26P" firstAttribute="leading" secondItem="Esz-7Y-Ey6" secondAttribute="trailing" constant="8" id="0LC-0w-s4A"/>
                     <constraint firstItem="Esz-7Y-Ey6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="AHI-yi-eu1"/>
                     <constraint firstAttribute="trailingMargin" secondItem="BJ7-xT-26P" secondAttribute="trailing" id="F7r-wC-Sqr"/>
                     <constraint firstItem="BJ7-xT-26P" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Esz-7Y-Ey6" secondAttribute="trailing" id="K0h-oV-aBS"/>
                     <constraint firstItem="BJ7-xT-26P" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ovh-xe-Mt1"/>
                     <constraint firstItem="Esz-7Y-Ey6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="y5q-Qz-9HC"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="F7r-wC-Sqr"/>
+                        <exclude reference="K0h-oV-aBS"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="timeContent" destination="BJ7-xT-26P" id="bpW-DJ-K6f"/>

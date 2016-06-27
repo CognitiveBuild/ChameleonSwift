@@ -82,6 +82,9 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         return 60
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        }
         let v = UIView()
         v.backgroundColor = UIColor(hexString: "#f0f1f3")
         v.frame = CGRectMake(0, 0, tableView.frame.size.width, 20)
