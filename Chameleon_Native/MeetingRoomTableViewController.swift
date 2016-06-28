@@ -16,7 +16,7 @@ class MeetingRoomTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Regist cell
+        //Regist cel
         self.tableView.registerNib(UINib(nibName: "TodayCell",bundle: nil), forCellReuseIdentifier: "todayCell")
         self.tableView.registerNib(UINib(nibName:"MeetingTimeCell",bundle:nil), forCellReuseIdentifier: "mtCell")
         self.tableView.backgroundColor = UIColor(hexString: "#f0f1f3")
@@ -75,6 +75,13 @@ class MeetingRoomTableViewController: UITableViewController {
         }
 
     }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 1
+        }else{
+            return 20
+        }
+    }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
@@ -92,6 +99,11 @@ class MeetingRoomTableViewController: UITableViewController {
             return 60
         }else{
             return 60
+        }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? BookMeetingTableViewController {
+            vc.device = self.device
         }
     }
 }

@@ -63,12 +63,7 @@ class IBMAreaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return deviceList.count
     }
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let v = UIView()
-        v.backgroundColor = UIColor(hexString: "#f0f1f3")
-        v.frame = CGRectMake(0, 0, tableView.frame.size.width, 20)
-        return v
-    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("areaCell", forIndexPath: indexPath) as! AreaTableViewCell
         let beacon = deviceList[indexPath.row]

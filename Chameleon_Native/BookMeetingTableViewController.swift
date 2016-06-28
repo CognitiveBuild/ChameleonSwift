@@ -9,7 +9,8 @@
 import UIKit
 
 class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
-
+    var device = Device()
+    var meeting:Meeting?
     @IBOutlet weak var bookButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,7 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         self.tableView.registerNib(UINib(nibName: "TimeCell",bundle: nil), forCellReuseIdentifier: "timeCell")
         self.tableView.backgroundColor = UIColor(hexString: "#f0f1f3")
         self.bookButton.layer.cornerRadius = 25
+        meeting = Meeting()
 
     }
 
@@ -26,6 +28,7 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func bookAction(sender: AnyObject) {
+        //
     }
 
     // MARK: - Table view data source
@@ -81,6 +84,13 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         }
         return 60
     }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 1
+        }else{
+            return 20
+        }
+    }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
@@ -90,8 +100,39 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         v.frame = CGRectMake(0, 0, tableView.frame.size.width, 20)
         return v
     }
-//    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-//        return true
-//    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 && indexPath.row != 2{
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! TimeCell
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "hh:mm a"
+            formatter.locale = NSLocale.systemLocale()
+            
+            if indexPath.row == 1 {
+                //Start Date:
+
+                DatePickerDialog().show("Start Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .DateAndTime) {
+                    (date) -> Void in
+                    let text = formatter.stringFromDate(date)
+
+                    cell.timeContent.text = text
+                    self.meeting?.startTime = text
+                }
+            }else{
+                //End Date:
+                DatePickerDialog().show("End Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .DateAndTime) {
+                    (date) -> Void in
+                    let text = formatter.stringFromDate(date)
+                    cell.timeContent.text = text
+                    self.meeting?.endTime = text
+                }
+            }
+
+        }
+
+    }
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        self.meeting?.meetingTitle = textView.text
+        return true
+    }
     
 }

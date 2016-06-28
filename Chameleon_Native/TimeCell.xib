@@ -20,21 +20,22 @@
                             <constraint firstAttribute="height" constant="21" id="u3L-uV-N7Y"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:39" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ7-xT-26P">
-                        <rect key="frame" x="107" y="19" width="47" height="21"/>
+                        <rect key="frame" x="245" y="19" width="47" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="syb-J4-W0o"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="BJ7-xT-26P" firstAttribute="leading" secondItem="Esz-7Y-Ey6" secondAttribute="trailing" constant="8" id="0LC-0w-s4A"/>
+                    <constraint firstItem="BJ7-xT-26P" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Esz-7Y-Ey6" secondAttribute="trailing" id="0LC-0w-s4A"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="BJ7-xT-26P" secondAttribute="trailing" constant="20" id="5Tg-aU-z77"/>
                     <constraint firstItem="Esz-7Y-Ey6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="AHI-yi-eu1"/>
                     <constraint firstAttribute="trailingMargin" secondItem="BJ7-xT-26P" secondAttribute="trailing" id="F7r-wC-Sqr"/>
                     <constraint firstItem="BJ7-xT-26P" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Esz-7Y-Ey6" secondAttribute="trailing" id="K0h-oV-aBS"/>
