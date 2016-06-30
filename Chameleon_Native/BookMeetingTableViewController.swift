@@ -11,6 +11,8 @@ import UIKit
 class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
     var device = Device()
     var meeting:Meeting?
+    let formatter = NSDateFormatter()
+
     @IBOutlet weak var bookButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,12 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         self.tableView.backgroundColor = UIColor(hexString: "#f0f1f3")
         self.bookButton.layer.cornerRadius = 25
         meeting = Meeting()
-
+        meeting?.bookBy = "Vincent"
+        formatter.dateFormat = "HH:mm"
+        formatter.locale = NSLocale.systemLocale()
+        meeting?.startTime = formatter.stringFromDate(NSDate())
+        meeting?.endTime = formatter.stringFromDate(NSDate().dateByAddingTimeInterval(3600))
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +36,21 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
     }
     @IBAction func bookAction(sender: AnyObject) {
         //
+        if let vc = self.navigationController?.viewControllers[2] as? MeetingRoomTableViewController {
+            vc.meetings.append(self.meeting!)
+            for d in DeviceManager.sharedInstance.devices {
+                if d.deviceID == device.deviceID {
+                    d.meetings = vc.meetings
+                    break
+                }
+            }
+            self.navigationController?.popToViewController(vc, animated: true)
+        }else{
+            print("not found Book meeting Controllers")
+        }
+
+        
+        
     }
 
     // MARK: - Table view data source
@@ -51,7 +73,10 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         let nRow = indexPath.row
         if nSection == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("todayCell", forIndexPath: indexPath) as! TodayCell
-            cell.todayLabel.text = NSDate().description
+            let todayFormatter = NSDateFormatter()
+            todayFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            cell.todayLabel.text = todayFormatter.stringFromDate(NSDate())
+
             return cell
         }else{
             if nRow == 2{
@@ -63,10 +88,10 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
                 let cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as! TimeCell
                 if nRow == 0 {
                     cell.timeTitle.text = "Start Time:"
-                    
+                    cell.timeContent.text = meeting?.startTime
                 }else{
                     cell.timeTitle.text = "End Time:"
-                    
+                    cell.timeContent.text = meeting?.endTime
                 }
                 return cell
             }
@@ -103,16 +128,13 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 && indexPath.row != 2{
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TimeCell
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "hh:mm a"
-            formatter.locale = NSLocale.systemLocale()
             
             if indexPath.row == 1 {
                 //Start Date:
-
+                self.view.endEditing(true)
                 DatePickerDialog().show("Start Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .DateAndTime) {
                     (date) -> Void in
-                    let text = formatter.stringFromDate(date)
+                    let text = self.formatter.stringFromDate(date)
 
                     cell.timeContent.text = text
                     self.meeting?.startTime = text
@@ -121,7 +143,7 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
                 //End Date:
                 DatePickerDialog().show("End Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .DateAndTime) {
                     (date) -> Void in
-                    let text = formatter.stringFromDate(date)
+                    let text = self.formatter.stringFromDate(date)
                     cell.timeContent.text = text
                     self.meeting?.endTime = text
                 }

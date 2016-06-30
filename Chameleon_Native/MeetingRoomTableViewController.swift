@@ -31,6 +31,11 @@ class MeetingRoomTableViewController: UITableViewController {
         self.bookButton.layer.cornerRadius = 25
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        
+    }
     func backToHome() {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
@@ -63,7 +68,9 @@ class MeetingRoomTableViewController: UITableViewController {
         let nRow = indexPath.row
         if nSection == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("todayCell", forIndexPath: indexPath) as! TodayCell
-            cell.todayLabel.text = NSDate().description
+            let todayFormatter = NSDateFormatter()
+            todayFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            cell.todayLabel.text = todayFormatter.stringFromDate(NSDate())
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("mtCell", forIndexPath: indexPath) as! MeetingTimeCell
