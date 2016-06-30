@@ -195,6 +195,7 @@ class DatePickerDialog: UIView {
         self.datePicker.frame.size.width = 300
         self.datePicker.datePickerMode = self.datePickerMode
         self.datePicker.date = self.defaultDate
+        self.datePicker.locale = NSLocale.systemLocale()
         self.datePicker.minimumDate = NSDate()
         dialogContainer.addSubview(self.datePicker)
         

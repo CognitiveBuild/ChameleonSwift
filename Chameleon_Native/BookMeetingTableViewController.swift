@@ -36,20 +36,32 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
     }
     @IBAction func bookAction(sender: AnyObject) {
         //
-        if let vc = self.navigationController?.viewControllers[2] as? MeetingRoomTableViewController {
-            vc.meetings.append(self.meeting!)
-            for d in DeviceManager.sharedInstance.devices {
-                if d.deviceID == device.deviceID {
-                    d.meetings = vc.meetings
-                    break
-                }
-            }
-            self.navigationController?.popToViewController(vc, animated: true)
-        }else{
-            print("not found Book meeting Controllers")
+        let s = self.meeting?.startTime
+        guard let startDate = formatter.dateFromString(s!)
+            else{
+                return
         }
-
-        
+        let e = self.meeting?.endTime
+        guard let endDate = formatter.dateFromString(e!)
+            else{
+                return
+        }
+        if startDate.compare(endDate) == .OrderedAscending{
+            if let vc = self.navigationController?.viewControllers[2] as? MeetingRoomTableViewController {
+                vc.meetings.append(self.meeting!)
+                for d in DeviceManager.sharedInstance.devices {
+                    if d.deviceID == device.deviceID {
+                        d.meetings = vc.meetings
+                        break
+                    }
+                }
+                self.navigationController?.popToViewController(vc, animated: true)
+            }else{
+                print("not found Book meeting Controllers")
+            }
+        }else{
+            print("Please input a valid date!")
+        }
         
     }
 
@@ -129,10 +141,10 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
         if indexPath.section == 1 && indexPath.row != 2{
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TimeCell
             
-            if indexPath.row == 1 {
+            if indexPath.row == 0 {
                 //Start Date:
                 self.view.endEditing(true)
-                DatePickerDialog().show("Start Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .DateAndTime) {
+                DatePickerDialog().show("Start Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Time) {
                     (date) -> Void in
                     let text = self.formatter.stringFromDate(date)
 
@@ -141,7 +153,7 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
                 }
             }else{
                 //End Date:
-                DatePickerDialog().show("End Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .DateAndTime) {
+                DatePickerDialog().show("End Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Time) {
                     (date) -> Void in
                     let text = self.formatter.stringFromDate(date)
                     cell.timeContent.text = text
