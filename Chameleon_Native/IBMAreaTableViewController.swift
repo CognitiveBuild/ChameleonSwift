@@ -47,6 +47,12 @@ class IBMAreaTableViewController: UITableViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     func showMyMeeting(){
+        guard let destVC = self.storyboard!.instantiateViewControllerWithIdentifier("myMeetingTable") as? MymeetingTableViewController
+            else{
+                return
+        }
+        let naviC = UINavigationController(rootViewController: destVC)
+        self.presentViewController(naviC, animated: true, completion: nil)
         print("Show My Meetings")
     }
     override func didReceiveMemoryWarning() {
