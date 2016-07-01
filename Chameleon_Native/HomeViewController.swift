@@ -11,7 +11,7 @@ import QuartzCore
 import CoreBluetooth
 import CoreLocation
 
-class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,UIGestureRecognizerDelegate {
+class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,UIGestureRecognizerDelegate {
     let kGeLoProfileUUID = "11E44F09-4EC4-407E-9203-CF57A50FBCE0"
     @IBOutlet weak var myTable: UITableView!
     @IBOutlet weak var searchBtn: UIButton!
@@ -35,8 +35,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let lftBtn = UIButton(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 160, height: 40)))
         lftBtn.contentHorizontalAlignment = .Left
         lftBtn.setImage(UIImage(named: "mymeeting"), forState: .Normal)
-        lftBtn.setTitle("My Meetings", forState: .Normal)
-        lftBtn.addTarget(self, action: #selector(showMyMeeting), forControlEvents: .TouchUpInside)
+//        lftBtn.setTitle("My Meetings", forState: .Normal)
+        lftBtn.addTarget(self, action: #selector(BaseViewController.onSlideMenuButtonPressed(_:)), forControlEvents: .TouchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: lftBtn)
         
         //Request authorization 
@@ -232,7 +232,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             return accuracy;
         }
     }
-    
+
     //MARK -prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let s = segue.identifier as String? {

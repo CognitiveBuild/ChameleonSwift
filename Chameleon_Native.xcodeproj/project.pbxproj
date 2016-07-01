@@ -81,6 +81,10 @@
 		188A2CA11D1D7EC10091D7ED /* MeetingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A2C9D1D1D7EC10091D7ED /* MeetingTimeCell.xib */; };
 		188A2CA21D1D7EC10091D7ED /* MeetingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A2C9D1D1D7EC10091D7ED /* MeetingTimeCell.xib */; };
 		188A2CA31D1D7EC10091D7ED /* MeetingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A2C9D1D1D7EC10091D7ED /* MeetingTimeCell.xib */; };
+		18A8E5781D2600C900190D2A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E5761D2600C900190D2A /* BaseViewController.swift */; };
+		18A8E5791D2600C900190D2A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E5771D2600C900190D2A /* MenuViewController.swift */; };
+		18A8E57C1D260C4D00190D2A /* fingerprint_scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E57A1D260C4D00190D2A /* fingerprint_scan@2x.png */; };
+		18A8E57D1D260C4D00190D2A /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E57B1D260C4D00190D2A /* settings@2x.png */; };
 		18AD636F1D127F0200DF47F5 /* Scanbottom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */; };
 		18AD63701D127F0200DF47F5 /* Scanbottom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */; };
 		18AD63711D127F0200DF47F5 /* Scanbottom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */; };
@@ -204,6 +208,10 @@
 		188A2C951D1D71160091D7ED /* TodayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayCell.xib; sourceTree = "<group>"; };
 		188A2C9C1D1D7EC10091D7ED /* MeetingTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingTimeCell.swift; sourceTree = "<group>"; };
 		188A2C9D1D1D7EC10091D7ED /* MeetingTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingTimeCell.xib; sourceTree = "<group>"; };
+		18A8E5761D2600C900190D2A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = 3rdLibrary/BaseViewController.swift; sourceTree = "<group>"; };
+		18A8E5771D2600C900190D2A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = 3rdLibrary/MenuViewController.swift; sourceTree = "<group>"; };
+		18A8E57A1D260C4D00190D2A /* fingerprint_scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fingerprint_scan@2x.png"; path = "Resources/fingerprint_scan@2x.png"; sourceTree = "<group>"; };
+		18A8E57B1D260C4D00190D2A /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Resources/settings@2x.png"; sourceTree = "<group>"; };
 		18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Scanbottom.jpg; sourceTree = "<group>"; };
 		18AD63761D128F7900DF47F5 /* Scan-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Scan-off@2x.png"; sourceTree = "<group>"; };
 		18AD63771D128F7900DF47F5 /* scan-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan-on@2x.png"; sourceTree = "<group>"; };
@@ -269,6 +277,8 @@
 		181BBE751D10347E00472FA1 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				18A8E5761D2600C900190D2A /* BaseViewController.swift */,
+				18A8E5771D2600C900190D2A /* MenuViewController.swift */,
 				181BBE761D1034A900472FA1 /* ZTextField.swift */,
 				181BBE7A1D10355E00472FA1 /* JiroTextField.swift */,
 				1880D6421D10414C008FE10D /* ZHud.swift */,
@@ -330,6 +340,8 @@
 		18CA4DE11CAD6AFD0017FF8A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A8E57A1D260C4D00190D2A /* fingerprint_scan@2x.png */,
+				18A8E57B1D260C4D00190D2A /* settings@2x.png */,
 				188A2C8E1D1D6C2C0091D7ED /* today@2x.png */,
 				1867E4551D1BC62800FFAE94 /* loginpage@2x.png */,
 				1867E43E1D1A692100FFAE94 /* meeting.json */,
@@ -535,6 +547,7 @@
 				1867E43F1D1A692100FFAE94 /* meeting.json in Resources */,
 				18B9A97E1D19890500C81A64 /* AreaTableViewCell.xib in Resources */,
 				18AD63781D128F7900DF47F5 /* Scan-off@2x.png in Resources */,
+				18A8E57D1D260C4D00190D2A /* settings@2x.png in Resources */,
 				18B9A9631D197ABD00C81A64 /* coffee@2x.png in Resources */,
 				18B9A9721D197ABD00C81A64 /* rest@2x.png in Resources */,
 				18AD637B1D128F7900DF47F5 /* scan-on@2x.png in Resources */,
@@ -555,6 +568,7 @@
 				186536861D1F80F20094517F /* TimeCell.xib in Resources */,
 				188A2CA11D1D7EC10091D7ED /* MeetingTimeCell.xib in Resources */,
 				18AD638D1D13C4F800DF47F5 /* beaconTableViewCell.xib in Resources */,
+				18A8E57C1D260C4D00190D2A /* fingerprint_scan@2x.png in Resources */,
 				18B9A9661D197ABD00C81A64 /* filter-cornerr@2x.png in Resources */,
 				1867E43B1D1A247600FFAE94 /* beaconDevices.plist in Resources */,
 				181909811D13CD600084358E /* overtime@2x.png in Resources */,
@@ -637,6 +651,7 @@
 				CB189ED51C8F1490003D4BBD /* HomeViewController.swift in Sources */,
 				181BBE841D10376500472FA1 /* LoginController.swift in Sources */,
 				181BBE7B1D10355E00472FA1 /* JiroTextField.swift in Sources */,
+				18A8E5781D2600C900190D2A /* BaseViewController.swift in Sources */,
 				CB9112121C96F3EF0089D1B6 /* Extensions.swift in Sources */,
 				18B9A9541D196AED00C81A64 /* IBMAreaTableViewController.swift in Sources */,
 				1880D6431D10414C008FE10D /* ZHud.swift in Sources */,
@@ -646,6 +661,7 @@
 				181BBE771D1034A900472FA1 /* ZTextField.swift in Sources */,
 				CB189ED31C8F1490003D4BBD /* AppDelegate.swift in Sources */,
 				186536831D1F80F20094517F /* TimeCell.swift in Sources */,
+				18A8E5791D2600C900190D2A /* MenuViewController.swift in Sources */,
 				188A2C961D1D71160091D7ED /* TodayCell.swift in Sources */,
 				1867E44E1D1B8BE000FFAE94 /* SwiftyJSON.swift in Sources */,
 				188A2C911D1D6F160091D7ED /* MeetingRoomTableViewController.swift in Sources */,
