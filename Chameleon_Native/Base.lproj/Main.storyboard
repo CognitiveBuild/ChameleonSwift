@@ -484,6 +484,35 @@
             </objects>
             <point key="canvasLocation" x="482.5" y="-42.5"/>
         </scene>
+        <!--Mymeeting Table View Controller-->
+        <scene sceneID="Ri9-pd-s8Y">
+            <objects>
+                <tableViewController storyboardIdentifier="myMeetingTable" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gwI-JX-9gZ" customClass="MymeetingTableViewController" customModule="Chameleon_Native" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hqk-Fb-BuL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ETf-pM-GTL">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ETf-pM-GTL" id="fzd-Hq-coI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gwI-JX-9gZ" id="VUI-mt-uWJ"/>
+                            <outlet property="delegate" destination="gwI-JX-9gZ" id="e2G-Vo-i6a"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cts-ck-3bY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="890.5" y="-42.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="NBR-PE-axh">
             <objects>

@@ -4,28 +4,31 @@
         "roomName" : "SO4 1 Floor 106",
         "meetings" : [
                       {
-                      "meetingTitle" : "Meeting with *IIP* Client.",
+                      "meetingTitle" : "SO3 3 Floor 302.",
                       "startTime" : "09:00",
                       "endTime" : "10:00",
                       "bookBy" : "Vincent",
-                      "meetingDes" : "",
-                      "meetingID" : 1
+                      "meetingDes" : "Meeting With Client",
+                      "meetingID" : 1,
+                      "meetingEmail":"zhouhdl@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "Meeting with *CIO* Client.",
+                      "meetingTitle" : "SO3 3 Floor 302.",
                       "startTime" : "14:00",
                       "endTime" : "15:00",
                       "bookBy" : "Gary",
-                      "meetingDes" : "",
-                      "meetingID" : 2
+                      "meetingDes" : "SMBC Daily Scrum",
+                      "meetingID" : 2,
+                      "meetingEmail":"gary@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "Meeting with *CTO* Client.",
+                      "meetingTitle" : "SO3 3 Floor 302.",
                       "startTime" : "16:00",
                       "endTime" : "16:30",
                       "bookBy" : "Mohamed",
                       "meetingDes" : "",
-                      "meetingID" : 3
+                      "meetingID" : 3,
+                      "meetingEmail":"mohamed@cn.ibm.com"
                       }
                       ],
         "type" : 1,
@@ -37,28 +40,31 @@
         "roomName" : "SO3 3 Floor 302",
         "meetings" : [
                       {
-                      "meetingTitle" : "Meeting with *WeChat* Client.",
+                      "meetingTitle" : "SO3 3 Floor 302",
                       "startTime" : "09:00",
                       "endTime" : "10:00",
                       "bookBy" : "Ivy",
                       "meetingDes" : "",
-                      "meetingID" : 1
+                      "meetingID" : 1,
+                      "meetingEmail":"dlliul@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "Meeting with *Tecent* Client.",
+                      "meetingTitle" : "SO3 3 Floor 302",
                       "startTime" : "14:00",
                       "endTime" : "15:00",
                       "bookBy" : "Frank",
                       "meetingDes" : "",
-                      "meetingID" : 2
+                      "meetingID" : 2,
+                      "meetingEmail":"frank@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "Meeting with *Baidu* Client.",
+                      "meetingTitle" : "SO3 3 Floor 302",
                       "startTime" : "16:00",
                       "endTime" : "16:30",
                       "bookBy" : "Summer",
                       "meetingDes" : "",
-                      "meetingID" : 3
+                      "meetingID" : 3,
+                      "meetingEmail":"lvzx@cn.ibm.com"
                       }
                       ],
         "type" : 1,

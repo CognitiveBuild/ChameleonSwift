@@ -85,6 +85,16 @@
 		18A8E5791D2600C900190D2A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E5771D2600C900190D2A /* MenuViewController.swift */; };
 		18A8E57C1D260C4D00190D2A /* fingerprint_scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E57A1D260C4D00190D2A /* fingerprint_scan@2x.png */; };
 		18A8E57D1D260C4D00190D2A /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E57B1D260C4D00190D2A /* settings@2x.png */; };
+		18A8E57F1D2641E500190D2A /* meetinglist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E57E1D2641E500190D2A /* meetinglist@2x.png */; };
+		18A8E5811D2648B500190D2A /* MymeetingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E5801D2648B500190D2A /* MymeetingTableViewController.swift */; };
+		18A8E5821D2648B500190D2A /* MymeetingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E5801D2648B500190D2A /* MymeetingTableViewController.swift */; };
+		18A8E5831D2648B500190D2A /* MymeetingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E5801D2648B500190D2A /* MymeetingTableViewController.swift */; };
+		18A8E5851D2651FB00190D2A /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E5841D2651FB00190D2A /* back@2x.png */; };
+		18A8E5861D2651FB00190D2A /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E5841D2651FB00190D2A /* back@2x.png */; };
+		18A8E5871D2651FB00190D2A /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E5841D2651FB00190D2A /* back@2x.png */; };
+		18A8E5891D265FF900190D2A /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E5881D265FF900190D2A /* menu@2x.png */; };
+		18A8E58A1D265FF900190D2A /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E5881D265FF900190D2A /* menu@2x.png */; };
+		18A8E58B1D265FF900190D2A /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8E5881D265FF900190D2A /* menu@2x.png */; };
 		18AD636F1D127F0200DF47F5 /* Scanbottom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */; };
 		18AD63701D127F0200DF47F5 /* Scanbottom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */; };
 		18AD63711D127F0200DF47F5 /* Scanbottom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */; };
@@ -212,6 +222,10 @@
 		18A8E5771D2600C900190D2A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = 3rdLibrary/MenuViewController.swift; sourceTree = "<group>"; };
 		18A8E57A1D260C4D00190D2A /* fingerprint_scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fingerprint_scan@2x.png"; path = "Resources/fingerprint_scan@2x.png"; sourceTree = "<group>"; };
 		18A8E57B1D260C4D00190D2A /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Resources/settings@2x.png"; sourceTree = "<group>"; };
+		18A8E57E1D2641E500190D2A /* meetinglist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "meetinglist@2x.png"; path = "Resources/meetinglist@2x.png"; sourceTree = "<group>"; };
+		18A8E5801D2648B500190D2A /* MymeetingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MymeetingTableViewController.swift; sourceTree = "<group>"; };
+		18A8E5841D2651FB00190D2A /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "Resources/back@2x.png"; sourceTree = "<group>"; };
+		18A8E5881D265FF900190D2A /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "Resources/menu@2x.png"; sourceTree = "<group>"; };
 		18AD636E1D127F0200DF47F5 /* Scanbottom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Scanbottom.jpg; sourceTree = "<group>"; };
 		18AD63761D128F7900DF47F5 /* Scan-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Scan-off@2x.png"; sourceTree = "<group>"; };
 		18AD63771D128F7900DF47F5 /* scan-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan-on@2x.png"; sourceTree = "<group>"; };
@@ -295,6 +309,7 @@
 				181BBE831D10376500472FA1 /* LoginController.swift */,
 				188A2C901D1D6F160091D7ED /* MeetingRoomTableViewController.swift */,
 				1865367D1D1E2F620094517F /* BookMeetingTableViewController.swift */,
+				18A8E5801D2648B500190D2A /* MymeetingTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -340,6 +355,9 @@
 		18CA4DE11CAD6AFD0017FF8A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A8E5881D265FF900190D2A /* menu@2x.png */,
+				18A8E5841D2651FB00190D2A /* back@2x.png */,
+				18A8E57E1D2641E500190D2A /* meetinglist@2x.png */,
 				18A8E57A1D260C4D00190D2A /* fingerprint_scan@2x.png */,
 				18A8E57B1D260C4D00190D2A /* settings@2x.png */,
 				188A2C8E1D1D6C2C0091D7ED /* today@2x.png */,
@@ -553,6 +571,8 @@
 				18AD637B1D128F7900DF47F5 /* scan-on@2x.png in Resources */,
 				188A2C8F1D1D6C2C0091D7ED /* today@2x.png in Resources */,
 				1867E4561D1BC62800FFAE94 /* loginpage@2x.png in Resources */,
+				18A8E5851D2651FB00190D2A /* back@2x.png in Resources */,
+				18A8E57F1D2641E500190D2A /* meetinglist@2x.png in Resources */,
 				18B9A96C1D197ABD00C81A64 /* filter-rest@2x.png in Resources */,
 				18B9A96F1D197ABD00C81A64 /* meetingroom@2x.png in Resources */,
 				1865368E1D1F81B00094517F /* InputCell.xib in Resources */,
@@ -570,6 +590,7 @@
 				18AD638D1D13C4F800DF47F5 /* beaconTableViewCell.xib in Resources */,
 				18A8E57C1D260C4D00190D2A /* fingerprint_scan@2x.png in Resources */,
 				18B9A9661D197ABD00C81A64 /* filter-cornerr@2x.png in Resources */,
+				18A8E5891D265FF900190D2A /* menu@2x.png in Resources */,
 				1867E43B1D1A247600FFAE94 /* beaconDevices.plist in Resources */,
 				181909811D13CD600084358E /* overtime@2x.png in Resources */,
 			);
@@ -583,6 +604,7 @@
 				188A2C9A1D1D71160091D7ED /* TodayCell.xib in Resources */,
 				1819098B1D13CD600084358E /* logout@2x.png in Resources */,
 				18AD63801D128FC000DF47F5 /* mymeeting@2x.png in Resources */,
+				18A8E58A1D265FF900190D2A /* menu@2x.png in Resources */,
 				18B9A9771D19841F00C81A64 /* radar@2x.png in Resources */,
 				1865368F1D1F81B00094517F /* InputCell.xib in Resources */,
 				181909881D13CD600084358E /* marker@2x.png in Resources */,
@@ -600,6 +622,7 @@
 				181909821D13CD600084358E /* overtime@2x.png in Resources */,
 				188A2CA21D1D7EC10091D7ED /* MeetingTimeCell.xib in Resources */,
 				18B9A9671D197ABD00C81A64 /* filter-cornerr@2x.png in Resources */,
+				18A8E5861D2651FB00190D2A /* back@2x.png in Resources */,
 				18AD638E1D13C4F800DF47F5 /* beaconTableViewCell.xib in Resources */,
 				18B9A9701D197ABD00C81A64 /* meetingroom@2x.png in Resources */,
 				18AD63701D127F0200DF47F5 /* Scanbottom.jpg in Resources */,
@@ -615,6 +638,7 @@
 				188A2C9B1D1D71160091D7ED /* TodayCell.xib in Resources */,
 				1819098C1D13CD600084358E /* logout@2x.png in Resources */,
 				18AD63811D128FC000DF47F5 /* mymeeting@2x.png in Resources */,
+				18A8E58B1D265FF900190D2A /* menu@2x.png in Resources */,
 				18B9A9781D19841F00C81A64 /* radar@2x.png in Resources */,
 				186536901D1F81B00094517F /* InputCell.xib in Resources */,
 				181909891D13CD600084358E /* marker@2x.png in Resources */,
@@ -632,6 +656,7 @@
 				181909831D13CD600084358E /* overtime@2x.png in Resources */,
 				188A2CA31D1D7EC10091D7ED /* MeetingTimeCell.xib in Resources */,
 				18B9A9681D197ABD00C81A64 /* filter-cornerr@2x.png in Resources */,
+				18A8E5871D2651FB00190D2A /* back@2x.png in Resources */,
 				18AD638F1D13C4F800DF47F5 /* beaconTableViewCell.xib in Resources */,
 				18B9A9711D197ABD00C81A64 /* meetingroom@2x.png in Resources */,
 				18AD63711D127F0200DF47F5 /* Scanbottom.jpg in Resources */,
@@ -661,6 +686,7 @@
 				181BBE771D1034A900472FA1 /* ZTextField.swift in Sources */,
 				CB189ED31C8F1490003D4BBD /* AppDelegate.swift in Sources */,
 				186536831D1F80F20094517F /* TimeCell.swift in Sources */,
+				18A8E5811D2648B500190D2A /* MymeetingTableViewController.swift in Sources */,
 				18A8E5791D2600C900190D2A /* MenuViewController.swift in Sources */,
 				188A2C961D1D71160091D7ED /* TodayCell.swift in Sources */,
 				1867E44E1D1B8BE000FFAE94 /* SwiftyJSON.swift in Sources */,
@@ -678,6 +704,7 @@
 				188A2C921D1D6F160091D7ED /* MeetingRoomTableViewController.swift in Sources */,
 				188A2C971D1D71160091D7ED /* TodayCell.swift in Sources */,
 				1861BD071D220C7F00EE9022 /* DatePickerDialog.swift in Sources */,
+				18A8E5821D2648B500190D2A /* MymeetingTableViewController.swift in Sources */,
 				181BBE781D1034A900472FA1 /* ZTextField.swift in Sources */,
 				18B9A97C1D19890500C81A64 /* AreaTableViewCell.swift in Sources */,
 				1865368C1D1F81B00094517F /* InputCell.swift in Sources */,
@@ -704,6 +731,7 @@
 				188A2C931D1D6F160091D7ED /* MeetingRoomTableViewController.swift in Sources */,
 				188A2C981D1D71160091D7ED /* TodayCell.swift in Sources */,
 				1861BD081D220C7F00EE9022 /* DatePickerDialog.swift in Sources */,
+				18A8E5831D2648B500190D2A /* MymeetingTableViewController.swift in Sources */,
 				181BBE791D1034A900472FA1 /* ZTextField.swift in Sources */,
 				18B9A97D1D19890500C81A64 /* AreaTableViewCell.swift in Sources */,
 				1865368D1D1F81B00094517F /* InputCell.swift in Sources */,

@@ -56,9 +56,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func updateArrayMenuOptions(){
+        arrayMenuOptions.append(["title":"My meetings", "icon":"meetinglist"])
+
         arrayMenuOptions.append(["title":"Touch id", "icon":"fingerprint_scan"])
         arrayMenuOptions.append(["title":"Settings", "icon":"settings"])
-        
+
         tblMenuOptions.reloadData()
     }
     

@@ -30,12 +30,10 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
         gesture.delegate = self
         self.searchBtn.addGestureRecognizer(gesture)
         
-        setupUIAppearance()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(logout))
         let lftBtn = UIButton(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 160, height: 40)))
         lftBtn.contentHorizontalAlignment = .Left
-        lftBtn.setImage(UIImage(named: "mymeeting"), forState: .Normal)
-//        lftBtn.setTitle("My Meetings", forState: .Normal)
+        lftBtn.setImage(UIImage(named: "menu"), forState: .Normal)
         lftBtn.addTarget(self, action: #selector(BaseViewController.onSlideMenuButtonPressed(_:)), forControlEvents: .TouchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: lftBtn)
         
@@ -44,6 +42,15 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setupUIAppearance()
+        myTable.reloadData()
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.deviceList.removeAll()
     }
     func setupUIAppearance(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)

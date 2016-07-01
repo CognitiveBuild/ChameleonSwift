@@ -46,6 +46,12 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
             else{
                 return
         }
+        guard let value = NSUserDefaults.standardUserDefaults().valueForKey("userEmail") as? String
+            else{
+                print("Email is not a string!")
+                return
+        }
+        meeting?.meetingEmail = value
         if startDate.compare(endDate) == .OrderedAscending{
             if let vc = self.navigationController?.viewControllers[2] as? MeetingRoomTableViewController {
                 vc.meetings.append(self.meeting!)
@@ -57,12 +63,20 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
                 }
                 self.navigationController?.popToViewController(vc, animated: true)
             }else{
-                print("not found Book meeting Controllers")
+                showAlert("Warning", msg: "Not found of Meeting Controller")
             }
         }else{
-            print("Please input a valid date!")
+            showAlert("Warning", msg: "Please input a valid date!")
         }
         
+    }
+    
+    func showAlert(title:String,msg:String) {
+        let alertController = UIAlertController(title: title, message:
+            msg, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -165,7 +179,7 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
 
     }
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        self.meeting?.meetingTitle = textView.text
+        self.meeting?.meetingDes = textView.text
         return true
     }
     

@@ -70,6 +70,7 @@ class LoginController: UITableViewController,UITextFieldDelegate {
         let homePage = self.storyboard?.instantiateViewControllerWithIdentifier("homeNavi")
 //        UIApplication.sharedApplication().keyWindow?.rootViewController = homePage
         self.presentViewController(homePage!, animated: true, completion: nil);
+        NSUserDefaults.standardUserDefaults().setValue(emailField.text, forKey: "userEmail")
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)

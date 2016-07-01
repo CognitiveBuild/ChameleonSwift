@@ -27,9 +27,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         switch(index){
         case 0:
             print("Home\n", terminator: "")
-
-            self.openViewControllerBasedOnIdentifier("Home")
-            
+            self.openViewControllerBasedOnIdentifier("myMeetingTable")
             break
         case 1:
             print("Play\n", terminator: "")
@@ -44,15 +42,9 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     
     func openViewControllerBasedOnIdentifier(strIdentifier:String){
         print("openViewControllerBasedOnIdentifier")
-//        let destViewController : UIViewController = self.storyboard!.instantiateViewControllerWithIdentifier(strIdentifier)
-//        
-//        let topViewController : UIViewController = self.navigationController!.topViewController!
-//        
-//        if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
-//            print("Same VC")
-//        } else {
-//            self.navigationController!.pushViewController(destViewController, animated: true)
-//        }
+        let destVC: UIViewController = self.storyboard!.instantiateViewControllerWithIdentifier(strIdentifier)
+        let naviC = UINavigationController(rootViewController: destVC)
+        self.presentViewController(naviC, animated: true, completion: nil)
     }
     
     func addSlideMenuButton(){

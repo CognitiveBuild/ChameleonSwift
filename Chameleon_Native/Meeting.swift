@@ -15,5 +15,5 @@ class Meeting: NSObject {
     var endTime:String = ""
     var bookBy:String = ""
     var meetingDes:String = ""
-    
+    var meetingEmail:String = ""
 }

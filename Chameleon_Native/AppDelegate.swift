@@ -70,7 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         let startTime = meeting["startTime"]as?String,
                                         let endTime = meeting["endTime"]as?String,
                                         let bookBy = meeting["bookBy"]as?String,
-                                        let meetingDes = meeting["meetingDes"]as?String
+                                        let meetingDes = meeting["meetingDes"]as?String,
+                                        let meetingEmail = meeting["meetingEmail"]as?String
                                         else{
                                             print("GUARD ERROR")
                                             return}
@@ -80,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     m.endTime = endTime
                                     m.bookBy = bookBy
                                     m.meetingDes = meetingDes
-                                    
+                                    m.meetingEmail = meetingEmail
                                     mList.append(m)
                                 }
                                 let d = Device()
