@@ -103,7 +103,13 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     
     func logout() {
         print("Logout")
+        self.pleaseWait()
+        self.performSelector(#selector(ShowLogin), withObject: nil, afterDelay: 3)
         
+    }
+    func ShowLogin() {
+        self.clearAllNotice()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     func showMyMeeting(){
         print("Show My Meetings")

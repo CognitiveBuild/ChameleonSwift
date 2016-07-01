@@ -154,10 +154,9 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 && indexPath.row != 2{
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TimeCell
-            
+            self.view.endEditing(true)
             if indexPath.row == 0 {
                 //Start Date:
-                self.view.endEditing(true)
                 DatePickerDialog().show("Start Date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Time) {
                     (date) -> Void in
                     let text = self.formatter.stringFromDate(date)

@@ -230,7 +230,7 @@
         <!--Login Controller-->
         <scene sceneID="cvr-Zs-oON">
             <objects>
-                <tableViewController id="dXE-cI-G2s" customClass="LoginController" customModule="Chameleon_Native" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="loginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dXE-cI-G2s" customClass="LoginController" customModule="Chameleon_Native" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0WL-FI-8ql">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

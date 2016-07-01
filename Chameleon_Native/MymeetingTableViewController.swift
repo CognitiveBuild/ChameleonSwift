@@ -15,6 +15,7 @@ class MymeetingTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.registerNib(UINib(nibName: "AreaTableViewCell",bundle: nil), forCellReuseIdentifier: "areaCell")
         self.title = "My Meetings";
+        self.tableView.tableFooterView = UIView()
         
         let lftBtn = UIButton(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 40, height: 40)))
         lftBtn.contentHorizontalAlignment = .Left
