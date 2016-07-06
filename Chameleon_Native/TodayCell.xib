@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-06-26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2O-Z4-21A">
-                        <rect key="frame" x="61" y="20" width="102" height="21"/>
+                        <rect key="frame" x="56" y="20" width="102" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="sEh-m6-znv"/>
                         </constraints>
@@ -23,11 +23,11 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="today.png" translatesAutoresizingMaskIntoConstraints="NO" id="8wv-VT-Tuq">
-                        <rect key="frame" x="18" y="13" width="35" height="35"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="today.png" translatesAutoresizingMaskIntoConstraints="NO" id="8wv-VT-Tuq">
+                        <rect key="frame" x="18" y="15.5" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="ltw-Q8-f49"/>
-                            <constraint firstAttribute="height" constant="35" id="lwY-4z-Hyy"/>
+                            <constraint firstAttribute="width" constant="30" id="ltw-Q8-f49"/>
+                            <constraint firstAttribute="height" constant="30" id="lwY-4z-Hyy"/>
                         </constraints>
                     </imageView>
                 </subviews>

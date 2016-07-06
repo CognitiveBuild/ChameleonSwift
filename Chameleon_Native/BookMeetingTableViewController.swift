@@ -61,7 +61,11 @@ class BookMeetingTableViewController: UITableViewController,UITextViewDelegate {
                         break
                     }
                 }
-                self.navigationController?.popToViewController(vc, animated: true)
+                let alert = UIAlertController(title: "Success", message: "The meeting room has been booked successfully,", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: { (let alert) in
+                    self.navigationController?.popToViewController(vc, animated: true)
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
             }else{
                 showAlert("Warning", msg: "Not found of Meeting Controller")
             }
