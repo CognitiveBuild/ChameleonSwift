@@ -104,6 +104,7 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     func logout() {
         print("Logout")
         self.pleaseWait()
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("userPassword");
         self.performSelector(#selector(ShowLogin), withObject: nil, afterDelay: 3)
         
     }

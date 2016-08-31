@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import LocalAuthentication
+
 
 class BaseViewController: UIViewController, SlideMenuDelegate {
     
@@ -26,14 +28,10 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         print("View Controller is : \(topViewController) \n", terminator: "")
         switch(index){
         case 0:
-            print("Home\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("myMeetingTable")
             break
         case 1:
-            print("Play\n", terminator: "")
-            
-            self.openViewControllerBasedOnIdentifier("PlayVC")
-            
+            self.touchidAuth()
             break
         default:
             print("default\n", terminator: "")
@@ -118,5 +116,53 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             menuVC.view.frame=CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height);
             sender.enabled = true
             }, completion:nil)
+    }
+    func touchidAuth(){
+        let authContext:LAContext = LAContext()
+        var error:NSError?
+        
+        //Is Touch ID hardware available & configured?
+        if(authContext.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error:&error))
+        {
+            //Perform Touch ID auth
+            authContext.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate User Touch ID", reply: {(wasSuccessful:Bool, error:NSError?) in
+                
+                if(wasSuccessful)
+                {
+                    //User authenticated
+                    self.writeOutAuthResult(error)
+                }
+                else
+                {
+                    //There are a few reasons why it can fail, we'll write them out to the user in the label
+                    self.writeOutAuthResult(error)
+                }
+                
+            })
+            
+        }
+        else
+        {
+            //Missing the hardware or Touch ID isn't configured
+            self.writeOutAuthResult(error)
+        }
+    }
+    func writeOutAuthResult(authError:NSError?)
+    {
+        dispatch_async(dispatch_get_main_queue(), {() in
+            if let possibleError = authError
+            {
+                print(possibleError);
+//                self.lblAuthResult.textColor = UIColor.redColor()
+//                self.lblAuthResult.text = possibleError.localizedDescription
+            }
+            else
+            {
+                print("Authentication Successful!!!")
+//                self.lblAuthResult.textColor = UIColor.greenColor()
+//                self.lblAuthResult.text = "Authentication successful."
+            }
+        })
+        
     }
 }

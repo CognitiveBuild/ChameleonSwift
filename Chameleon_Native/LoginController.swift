@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class LoginController: UITableViewController,UITextFieldDelegate {
     
@@ -14,18 +15,21 @@ class LoginController: UITableViewController,UITextFieldDelegate {
     @IBOutlet weak var pwdField: JiroTextField!
     //192+70+70
     @IBOutlet weak var footView: UIView!
+    @IBOutlet weak var headerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         emailField.delegate = self
         pwdField.delegate = self
         emailField.placeholderColor = .darkGrayColor();
         pwdField.placeholderColor = .darkGrayColor();
-//        self.tableView.scrollEnabled = false
         let screenHight = UIScreen.mainScreen().bounds.size.height-192-140
         self.footView.frame = CGRectMake(0, 0, self.tableView.frame.size.width,screenHight)
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LoginController.hideKeyboard));
+        self.headerView.addGestureRecognizer(tapGesture);
     }
-    
+    func hideKeyboard(){
+        self.view.endEditing(true);
+    }
     @IBAction func loginAction(sender: AnyObject) {
         login()
     }
@@ -40,6 +44,7 @@ class LoginController: UITableViewController,UITextFieldDelegate {
                 if let p = password as String? {
                     if p.characters.count > 5 {
                         self.pleaseWait()
+                        NSUserDefaults.standardUserDefaults().setValue(p, forKey: "userPassword");
                         self.performSelector(#selector(gotoHome), withObject: nil, afterDelay: 3)
                     }else{
                         showAlert("Warning",msg:"Please input a valid password")
@@ -68,9 +73,67 @@ class LoginController: UITableViewController,UITextFieldDelegate {
     func gotoHome() {
         self.clearAllNotice()
         let homePage = self.storyboard?.instantiateViewControllerWithIdentifier("homeNavi")
-//        UIApplication.sharedApplication().keyWindow?.rootViewController = homePage
         self.presentViewController(homePage!, animated: true, completion: nil);
         NSUserDefaults.standardUserDefaults().setValue(emailField.text, forKey: "userEmail")
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let email = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")
+        if let e = email as String? {
+            emailField.text = e
+            let pwd = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
+            pwdField.text = pwd;
+            if let p = pwd as String?{
+                if p.characters.count > 0 {
+                    self.touchidAuth();
+                }
+            }
+        }
+    }
+    func touchidAuth(){
+        let authContext:LAContext = LAContext()
+        var error:NSError?
+        
+        //Is Touch ID hardware available & configured?
+        if(authContext.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error:&error))
+        {
+            //Perform Touch ID auth
+            authContext.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate User Touch ID", reply: {(wasSuccessful:Bool, error:NSError?) in
+                
+                if(wasSuccessful)
+                {
+                    //User authenticated
+                    self.writeOutAuthResult(error)
+                }
+                else
+                {
+                    //There are a few reasons why it can fail, we'll write them out to the user in the label
+                    self.writeOutAuthResult(error)
+                }
+                
+            })
+            
+        }
+        else
+        {
+            //Missing the hardware or Touch ID isn't configured
+            self.writeOutAuthResult(error)
+        }
+    }
+    func writeOutAuthResult(authError:NSError?)
+    {
+        dispatch_async(dispatch_get_main_queue(), {() in
+            if let possibleError = authError
+            {
+                print(possibleError);
+            }
+            else
+            {
+                print("Authentication Successful!!!")
+                self.login()
+            }
+        })
+        
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)

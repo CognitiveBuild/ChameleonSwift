@@ -4,7 +4,7 @@
         "roomName" : "SO4 1 Floor 106",
         "meetings" : [
                       {
-                      "meetingTitle" : "SO3 3 Floor 302.",
+                      "meetingTitle" : "SO4 1 Floor 102.",
                       "startTime" : "09:00",
                       "endTime" : "10:00",
                       "bookBy" : "Vincent",
@@ -13,7 +13,7 @@
                       "meetingEmail":"zhouhdl@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "SO3 3 Floor 302.",
+                      "meetingTitle" : "SO4 1 Floor 102.",
                       "startTime" : "14:00",
                       "endTime" : "15:00",
                       "bookBy" : "Gary",
@@ -22,7 +22,7 @@
                       "meetingEmail":"gary@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "SO3 3 Floor 302.",
+                      "meetingTitle" : "SO4 1 Floor 102.",
                       "startTime" : "16:00",
                       "endTime" : "16:30",
                       "bookBy" : "Mohamed",
@@ -36,11 +36,11 @@
         "meetingroomID" : "12345"
     },
     "2359" : {
-        "address" : "SO3 3F",
-        "roomName" : "SO3 3 Floor 302",
+        "address" : "SO4 1F",
+        "roomName" : "SO4 1 Floor 102",
         "meetings" : [
                       {
-                      "meetingTitle" : "SO3 3 Floor 302",
+                      "meetingTitle" : "SO4 1 Floor 102.",
                       "startTime" : "09:00",
                       "endTime" : "10:00",
                       "bookBy" : "Ivy",
@@ -49,7 +49,7 @@
                       "meetingEmail":"dlliul@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "SO3 3 Floor 302",
+                      "meetingTitle" : "SO4 1 Floor 102.",
                       "startTime" : "14:00",
                       "endTime" : "15:00",
                       "bookBy" : "Frank",
@@ -58,7 +58,7 @@
                       "meetingEmail":"frank@cn.ibm.com"
                       },
                       {
-                      "meetingTitle" : "SO3 3 Floor 302",
+                      "meetingTitle" : "SO4 1 Floor 102.",
                       "startTime" : "16:00",
                       "endTime" : "16:30",
                       "bookBy" : "Summer",
