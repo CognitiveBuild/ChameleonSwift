@@ -25,16 +25,16 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myTable.registerNib(UINib(nibName: "beaconTableViewCell", bundle: nil), forCellReuseIdentifier: "beaconCell")
+        myTable.register(UINib(nibName: "beaconTableViewCell", bundle: nil), forCellReuseIdentifier: "beaconCell")
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(startSearchingBeacon))
         gesture.delegate = self
         self.searchBtn.addGestureRecognizer(gesture)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(logout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
         let lftBtn = UIButton(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 160, height: 40)))
-        lftBtn.contentHorizontalAlignment = .Left
-        lftBtn.setImage(UIImage(named: "menu"), forState: .Normal)
-        lftBtn.addTarget(self, action: #selector(BaseViewController.onSlideMenuButtonPressed(_:)), forControlEvents: .TouchUpInside)
+        lftBtn.contentHorizontalAlignment = .left
+        lftBtn.setImage(UIImage(named: "menu"), for: UIControlState())
+        lftBtn.addTarget(self, action: #selector(BaseViewController.onSlideMenuButtonPressed(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: lftBtn)
         
         //Request authorization 
@@ -43,44 +43,44 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
         locationManager.requestAlwaysAuthorization()
         
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUIAppearance()
         myTable.reloadData()
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.deviceList.removeAll()
     }
     func setupUIAppearance(){
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true;
-        self.navigationController?.view.backgroundColor = UIColor.clearColor()
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.isTranslucent = true;
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         //Table View
-        myTable.backgroundColor = UIColor.clearColor()
+        myTable.backgroundColor = UIColor.clear
         myTable.tableFooterView = UIView()
-        myTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        myTable.separatorStyle = UITableViewCellSeparatorStyle.none
 
     }
 
-    func startSearchingBeacon(sender: UILongPressGestureRecognizer){
-        if sender.state == .Ended {
+    func startSearchingBeacon(_ sender: UILongPressGestureRecognizer){
+        if sender.state == .ended {
             print("UIGestureRecognizerStateEnded")
             self.stopSearching()
         }
-        else if sender.state == .Began {
+        else if sender.state == .began {
             print("UIGestureRecognizerStateBegan.")
             self.startSearching()
-        }else if sender.state == .Cancelled {
+        }else if sender.state == .cancelled {
             self.stopSearching()
         }
     }
     func startSearching(){
         _disPlayLink = CADisplayLink(target: self, selector: #selector(HomeViewController.setupAnimationLayer))
         _disPlayLink?.frameInterval = 40
-        _disPlayLink?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        _disPlayLink?.add(to: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         //Start searching beacon
         startScanning()
     }
@@ -93,7 +93,7 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
         }
         stopScanning()
         if self.deviceList.count > 0 {
-            let areaPage = self.storyboard?.instantiateViewControllerWithIdentifier("ibmAreaVC") as! IBMAreaTableViewController
+            let areaPage = self.storyboard?.instantiateViewController(withIdentifier: "ibmAreaVC") as! IBMAreaTableViewController
             areaPage.deviceList = self.deviceList
             self.navigationController?.pushViewController(areaPage, animated: true)
         }else{
@@ -104,13 +104,13 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     func logout() {
         print("Logout")
         self.pleaseWait()
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("userPassword");
-        self.performSelector(#selector(ShowLogin), withObject: nil, afterDelay: 3)
+        UserDefaults.standard.removeObject(forKey: "userPassword");
+        self.perform(#selector(ShowLogin), with: nil, afterDelay: 3)
         
     }
     func ShowLogin() {
         self.clearAllNotice()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     func showMyMeeting(){
         print("Show My Meetings")
@@ -122,18 +122,18 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
 //MARK -PRIVATE Method
     func startAnimation(){
         let layer = CALayer()
-        layer.cornerRadius = UIScreen.mainScreen().bounds.size.width/2
-        layer.frame = CGRectMake(0, 0, layer.cornerRadius*2, layer.cornerRadius*2)
+        layer.cornerRadius = UIScreen.main.bounds.size.width/2
+        layer.frame = CGRect(x: 0, y: 0, width: layer.cornerRadius*2, height: layer.cornerRadius*2)
         layer.position = self.view.layer.position
         let color = UIColor(red: CGFloat.random, green: CGFloat.random, blue:  CGFloat.random, alpha: 1)
-        layer.backgroundColor = color.CGColor
+        layer.backgroundColor = color.cgColor
         self.view.layer.addSublayer(layer)
         
         
         let defaultCurve = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault);
-        _animationGroup.delegate = self
+//        _animationGroup.delegate = self
         _animationGroup.duration = 2.0
-        _animationGroup.removedOnCompletion = true
+        _animationGroup.isRemovedOnCompletion = true
         _animationGroup.timingFunction = defaultCurve
         
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale.xy")
@@ -144,17 +144,17 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
         let opencityAnimation = CAKeyframeAnimation(keyPath: "opacity");
         opencityAnimation.duration = 2
         opencityAnimation.values = [0.8,0.4,0]
-        opencityAnimation.removedOnCompletion = true
+        opencityAnimation.isRemovedOnCompletion = true
         
         let animations = [scaleAnimation,opencityAnimation]
         _animationGroup.animations = animations
         
-        layer.addAnimation(_animationGroup, forKey: nil)
-        self.performSelector(#selector(HomeViewController.removeLayer(_:)), withObject: layer, afterDelay: 1.5)
+        layer.add(_animationGroup, forKey: nil)
+        self.perform(#selector(HomeViewController.removeLayer(_:)), with: layer, afterDelay: 1.5)
         self.isAnimating = true
     }
     
-    func removeLayer(layer:CALayer){
+    func removeLayer(_ layer:CALayer){
         layer.removeFromSuperlayer();
     }
     func setupAnimationLayer(){
@@ -168,21 +168,21 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
 
     //MARK -Tableview Delegate and DataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return deviceList.count
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("beaconCell", forIndexPath: indexPath) as! beaconTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "beaconCell", for: indexPath) as! beaconTableViewCell
         let nRow = indexPath.row
         let beacon = deviceList[nRow] as CLBeacon
-        let minor = beacon.minor.integerValue
+        let minor = beacon.minor.intValue
         for d in DeviceManager.sharedInstance.devices {
             if Int(d.deviceID) == minor {
                 cell.nameLabel.text = d.roomName
@@ -197,9 +197,9 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     
     //MARK -CLLocationManager Delegate
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedAlways {
-            if CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
                 if CLLocationManager.isRangingAvailable() {
                     //is available
                     print("it is available---CLBEACON")
@@ -207,7 +207,7 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
             }
         }
     }
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         if beacons.count > 0 {
             print("++++++\(region.identifier) ====== \(beacons.count)")
             self.deviceList = beacons
@@ -219,21 +219,21 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
 
     //MARK - Scanning Method
     func startScanning(){
-        let uuid = NSUUID(UUIDString: kGeLoProfileUUID)
+        let uuid = UUID(uuidString: kGeLoProfileUUID)
         let beaconRegion = CLBeaconRegion(proximityUUID:uuid!, identifier: "com.gelosite")
         
-        locationManager.startMonitoringForRegion(beaconRegion)
-        locationManager.startRangingBeaconsInRegion(beaconRegion)
+        locationManager.startMonitoring(for: beaconRegion)
+        locationManager.startRangingBeacons(in: beaconRegion)
     }
     
     func stopScanning(){
-        let uuid = NSUUID(UUIDString: kGeLoProfileUUID)
+        let uuid = UUID(uuidString: kGeLoProfileUUID)
         let beaconRegion = CLBeaconRegion(proximityUUID:uuid!, identifier: "com.gelosite")
-        locationManager.stopMonitoringForRegion(beaconRegion)
-        locationManager.stopRangingBeaconsInRegion(beaconRegion)
+        locationManager.stopMonitoring(for: beaconRegion)
+        locationManager.stopRangingBeacons(in: beaconRegion)
     }
     
-    func calculateDistance(txPower:Int, rssi:Double)->Double {
+    func calculateDistance(_ txPower:Int, rssi:Double)->Double {
         if (rssi == 0) {
             return -1.0; // if we cannot determine distance, return -1.
         }
@@ -248,10 +248,10 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
 
     //MARK -prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let s = segue.identifier as String? {
             if s == "showIBMArea" {
-                if let vc = segue.destinationViewController as? IBMAreaTableViewController {
+                if let vc = segue.destination as? IBMAreaTableViewController {
                     if let p = sender as? [CLBeacon] {
                         vc.deviceList = p
                     }

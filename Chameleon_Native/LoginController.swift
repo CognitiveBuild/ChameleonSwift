@@ -20,17 +20,17 @@ class LoginController: UITableViewController,UITextFieldDelegate {
         super.viewDidLoad()
         emailField.delegate = self
         pwdField.delegate = self
-        emailField.placeholderColor = .darkGrayColor();
-        pwdField.placeholderColor = .darkGrayColor();
-        let screenHight = UIScreen.mainScreen().bounds.size.height-192-140
-        self.footView.frame = CGRectMake(0, 0, self.tableView.frame.size.width,screenHight)
+        emailField.placeholderColor = .darkGray;
+        pwdField.placeholderColor = .darkGray;
+        let screenHight = UIScreen.main.bounds.size.height-192-140
+        self.footView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width,height: screenHight)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LoginController.hideKeyboard));
         self.headerView.addGestureRecognizer(tapGesture);
     }
     func hideKeyboard(){
         self.view.endEditing(true);
     }
-    @IBAction func loginAction(sender: AnyObject) {
+    @IBAction func loginAction(_ sender: AnyObject) {
         login()
     }
     func login(){
@@ -44,8 +44,8 @@ class LoginController: UITableViewController,UITextFieldDelegate {
                 if let p = password as String? {
                     if p.characters.count > 5 {
                         self.pleaseWait()
-                        NSUserDefaults.standardUserDefaults().setValue(p, forKey: "userPassword");
-                        self.performSelector(#selector(gotoHome), withObject: nil, afterDelay: 3)
+                        UserDefaults.standard.setValue(p, forKey: "userPassword");
+                        self.perform(#selector(gotoHome), with: nil, afterDelay: 3)
                     }else{
                         showAlert("Warning",msg:"Please input a valid password")
                     }
@@ -60,28 +60,28 @@ class LoginController: UITableViewController,UITextFieldDelegate {
             showAlert("Warning", msg: "Please input a valid username.")
         }
     }
-    func isValidEmail(testStr:String?) -> Bool {
+    func isValidEmail(_ testStr:String?) -> Bool {
         if let s = testStr as String? {
             let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
             
             let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-            return emailTest.evaluateWithObject(s)
+            return emailTest.evaluate(with: s)
         }
         return false
 
     }
     func gotoHome() {
         self.clearAllNotice()
-        let homePage = self.storyboard?.instantiateViewControllerWithIdentifier("homeNavi")
-        self.presentViewController(homePage!, animated: true, completion: nil);
-        NSUserDefaults.standardUserDefaults().setValue(emailField.text, forKey: "userEmail")
+        let homePage = self.storyboard?.instantiateViewController(withIdentifier: "homeNavi")
+        self.present(homePage!, animated: true, completion: nil);
+        UserDefaults.standard.setValue(emailField.text, forKey: "userEmail")
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let email = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")
+        let email = UserDefaults.standard.string(forKey: "userEmail")
         if let e = email as String? {
             emailField.text = e
-            let pwd = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
+            let pwd = UserDefaults.standard.string(forKey: "userPassword")
             pwdField.text = pwd;
             if let p = pwd as String?{
                 if p.characters.count > 0 {
@@ -90,39 +90,36 @@ class LoginController: UITableViewController,UITextFieldDelegate {
             }
         }
     }
-    func touchidAuth(){
+    func touchidAuth() {
         let authContext:LAContext = LAContext()
         var error:NSError?
         
         //Is Touch ID hardware available & configured?
-        if(authContext.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error:&error))
-        {
+        if(authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error:&error)) {
             //Perform Touch ID auth
-            authContext.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate User Touch ID", reply: {(wasSuccessful:Bool, error:NSError?) in
-                
-                if(wasSuccessful)
-                {
-                    //User authenticated
-                    self.writeOutAuthResult(error)
-                }
-                else
-                {
-                    //There are a few reasons why it can fail, we'll write them out to the user in the label
-                    self.writeOutAuthResult(error)
-                }
-                
-            })
-            
+            authContext.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics,
+                                       localizedReason: "Authenticate User Touch ID",
+                                       reply: { (wasSuccessful, error) in
+                                        
+                                        if(wasSuccessful) {
+                                            //User authenticated
+                                            self.writeOutAuthResult(error as NSError?)
+                                        }
+                                        else {
+                                            //There are a few reasons why it can fail, we'll write them out to the user in the label
+                                            self.writeOutAuthResult(error as NSError?)
+                                        }
+            }
+            )
         }
-        else
-        {
+        else {
             //Missing the hardware or Touch ID isn't configured
             self.writeOutAuthResult(error)
         }
     }
-    func writeOutAuthResult(authError:NSError?)
+    func writeOutAuthResult(_ authError:NSError?)
     {
-        dispatch_async(dispatch_get_main_queue(), {() in
+        DispatchQueue.main.async(execute: {() in
             if let possibleError = authError
             {
                 print(possibleError);
@@ -135,7 +132,7 @@ class LoginController: UITableViewController,UITextFieldDelegate {
         })
         
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     override func didReceiveMemoryWarning() {
@@ -145,17 +142,17 @@ class LoginController: UITableViewController,UITextFieldDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 2
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField==emailField {
             self.pwdField.becomeFirstResponder()
         }else{
@@ -164,11 +161,11 @@ class LoginController: UITableViewController,UITextFieldDelegate {
         return true
     }
     //MARK -POPUP Alert
-    func showAlert(title:String,msg:String) {
+    func showAlert(_ title:String,msg:String) {
         let alertController = UIAlertController(title: title, message:
-            msg, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            msg, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

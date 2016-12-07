@@ -23,7 +23,7 @@ public extension Int {
      
      - returns: Int
      */
-    public static func random(n: Int) -> Int {
+    public static func random(_ n: Int) -> Int {
         return Int(arc4random_uniform(UInt32(n)))
     }
     /**
@@ -34,7 +34,7 @@ public extension Int {
      
      - returns: Int
      */
-    public static func random(min: Int, max: Int) -> Int {
+    public static func random(_ min: Int, max: Int) -> Int {
         return Int.random(max - min + 1) + min
         //Int(arc4random_uniform(UInt32(max - min + 1))) + min }
     }
@@ -54,7 +54,7 @@ public extension Double {
      
      - returns: Double
      */
-    public static func random(min: Double, max: Double) -> Double {
+    public static func random(_ min: Double, max: Double) -> Double {
         return Double.random * (max - min) + min
     }
 }
@@ -73,7 +73,7 @@ public extension Float {
      
      - returns: Float
      */
-    public static func random(min min: Float, max: Float) -> Float {
+    public static func random(min: Float, max: Float) -> Float {
         return Float.random * (max - min) + min
     }
 }
@@ -98,15 +98,15 @@ public extension CGFloat {
      
      - returns: CGFloat random number
      */
-    public static func random(min: CGFloat, max: CGFloat) -> CGFloat {
+    public static func random(_ min: CGFloat, max: CGFloat) -> CGFloat {
         return CGFloat.random * (max - min) + min
     }
 }
 extension UIColor {
     convenience init(hexString: String) {
-        let hex = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
-        NSScanner(string: hex).scanHexInt(&int)
+        Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
         switch hex.characters.count {
         case 3: // RGB (12-bit)

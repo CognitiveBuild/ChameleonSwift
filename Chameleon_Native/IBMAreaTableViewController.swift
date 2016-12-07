@@ -15,44 +15,44 @@ class IBMAreaTableViewController: UITableViewController {
     var deviceInfo:NSArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let path = NSBundle.mainBundle().pathForResource("beaconDevices", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "beaconDevices", ofType: "plist") {
             self.deviceInfo = NSArray(contentsOfFile: path)
         }
         
-        self.tableView.registerNib(UINib(nibName: "AreaTableViewCell",bundle: nil), forCellReuseIdentifier: "areaCell")
+        self.tableView.register(UINib(nibName: "AreaTableViewCell",bundle: nil), forCellReuseIdentifier: "areaCell")
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = UIColor(hexString: "#f0f1f3")
         self.title = "IBM Areas"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor(hexString:"#a71428")
         
         let lftBtn = UIButton(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 40, height: 40)))
-        lftBtn.contentHorizontalAlignment = .Left
-        lftBtn.setImage(UIImage(named: "mymeeting"), forState: .Normal)
-        lftBtn.addTarget(self, action: #selector(showMyMeeting), forControlEvents: .TouchUpInside)
+        lftBtn.contentHorizontalAlignment = .left
+        lftBtn.setImage(UIImage(named: "mymeeting"), for: UIControlState())
+        lftBtn.addTarget(self, action: #selector(showMyMeeting), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: lftBtn)
         let replyBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        replyBtn.setImage(UIImage(named: "radar"), forState: UIControlState.Normal)
-        replyBtn.addTarget(self, action: #selector(backToHome), forControlEvents:  UIControlEvents.TouchUpInside)
+        replyBtn.setImage(UIImage(named: "radar"), for: UIControlState())
+        replyBtn.addTarget(self, action: #selector(backToHome), for:  UIControlEvents.touchUpInside)
         let item = UIBarButtonItem(customView: replyBtn)
         self.navigationItem.rightBarButtonItem = item
 
     }
     
     func backToHome() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     func showMyMeeting(){
-        guard let destVC = self.storyboard!.instantiateViewControllerWithIdentifier("myMeetingTable") as? MymeetingTableViewController
+        guard let destVC = self.storyboard!.instantiateViewController(withIdentifier: "myMeetingTable") as? MymeetingTableViewController
             else{
                 return
         }
         let naviC = UINavigationController(rootViewController: destVC)
-        self.presentViewController(naviC, animated: true, completion: nil)
+        self.present(naviC, animated: true, completion: nil)
         print("Show My Meetings")
     }
     override func didReceiveMemoryWarning() {
@@ -62,19 +62,19 @@ class IBMAreaTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return deviceList.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("areaCell", forIndexPath: indexPath) as! AreaTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "areaCell", for: indexPath) as! AreaTableViewCell
         let beacon = deviceList[indexPath.row]
         
-        let minor = beacon.minor.integerValue
+        let minor = beacon.minor.intValue
         
         for d in DeviceManager.sharedInstance.devices {
             print(d.deviceID)
@@ -92,25 +92,25 @@ class IBMAreaTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
 
         let beacon = deviceList[indexPath.row]
-        let minor = beacon.minor.integerValue
+        let minor = beacon.minor.intValue
         for d in DeviceManager.sharedInstance.devices {
             if Int(d.deviceID) == minor {
-                self.performSegueWithIdentifier("showMeeting", sender: d)
+                self.performSegue(withIdentifier: "showMeeting", sender: d)
                 break
             }
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMeeting"{
-            if let vc = segue.destinationViewController as? MeetingRoomTableViewController {
+            if let vc = segue.destination as? MeetingRoomTableViewController {
                 if let obj = sender as? Device {
                     vc.device = obj
                 }

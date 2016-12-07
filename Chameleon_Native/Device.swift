@@ -18,18 +18,9 @@ class Device: NSObject {
 
 }
 
-class DeviceManager: NSObject {
-    var devices:[Device] = [Device]()
-    
-    class var sharedInstance: DeviceManager {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: DeviceManager? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = DeviceManager()
-        }
-        return Static.instance!
-    }
+//dispatch_once is deprecated in Swift 3
 
+class DeviceManager {
+    static let sharedInstance = DeviceManager()
+    var devices:[Device] = [Device]()
 }

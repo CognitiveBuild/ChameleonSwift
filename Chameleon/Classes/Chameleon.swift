@@ -13,13 +13,13 @@ import CoreLocation
     
 }
 
-public class Chameleon: NSObject,CLLocationManagerDelegate {
+open class Chameleon: NSObject,CLLocationManagerDelegate {
 
     /// Initialize location manager
     internal let locationManager = CLLocationManager()
     
-    public var delegate:ChameleonDelegate?
-    internal var uuid:NSUUID?
+    open var delegate:ChameleonDelegate?
+    internal var uuid:UUID?
     internal var bRegion:CLRegion?
     internal var beaconId:String?
     
@@ -37,17 +37,17 @@ public class Chameleon: NSObject,CLLocationManagerDelegate {
         self.init()
         self.setupBeacon(uuid, identifier: identifier)
     }
-    public func setupBeacon(uuid:String,identifier:String){
-        self.uuid = NSUUID(UUIDString: uuid)
+    open func setupBeacon(_ uuid:String,identifier:String){
+        self.uuid = UUID(uuidString: uuid)
         let beaconRegion = CLBeaconRegion(proximityUUID:self.uuid!, identifier: identifier)
         self.startMonitor(beaconRegion)
     }
-    public func startMonitor(region:CLBeaconRegion){
+    open func startMonitor(_ region:CLBeaconRegion){
         
-        locationManager.startMonitoringForRegion(region)
-        locationManager.startRangingBeaconsInRegion(region)
+        locationManager.startMonitoring(for: region)
+        locationManager.startRangingBeacons(in: region)
     }
-    public func getUserAuthorization()->Bool{
+    open func getUserAuthorization()->Bool{
         NSLog("Get User Autorization")
         return true
     }

@@ -19,14 +19,14 @@ class beaconTableViewCell: UITableViewCell {
         // Initialization code
         bgView.layer.cornerRadius = bgView.frame.size.height/2
         bgView.layer.masksToBounds = true
-        bgView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        bgView.layer.borderColor = UIColor.lightGray.cgColor
         bgView.layer.borderWidth = 1
-        self.contentView.backgroundColor = UIColor.clearColor()
-        self.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.clear
         
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

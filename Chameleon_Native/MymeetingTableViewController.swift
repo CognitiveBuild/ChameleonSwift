@@ -13,36 +13,36 @@ class MymeetingTableViewController: UITableViewController {
     var myMeetings = [Meeting]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerNib(UINib(nibName: "AreaTableViewCell",bundle: nil), forCellReuseIdentifier: "areaCell")
+        self.tableView.register(UINib(nibName: "AreaTableViewCell",bundle: nil), forCellReuseIdentifier: "areaCell")
         self.title = "My Meetings";
         self.tableView.tableFooterView = UIView()
         
         let lftBtn = UIButton(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 40, height: 40)))
-        lftBtn.contentHorizontalAlignment = .Left
+        lftBtn.contentHorizontalAlignment = .left
         lftBtn.contentEdgeInsets = UIEdgeInsetsMake(0, -7, 0, 0)
-        lftBtn.setImage(UIImage(named: "back"), forState: .Normal)
-        lftBtn.addTarget(self, action: #selector(backtoHome), forControlEvents: .TouchUpInside)
+        lftBtn.setImage(UIImage(named: "back"), for: UIControlState())
+        lftBtn.addTarget(self, action: #selector(backtoHome), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: lftBtn)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor(hexString:"#a71428")
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupData()
     }
     
     func backtoHome(){
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setupData(){
-        guard let value = NSUserDefaults.standardUserDefaults().valueForKey("userEmail") as? String
+        guard let value = UserDefaults.standard.value(forKey: "userEmail") as? String
             else{
                 print("Email is not a string!")
                 return
@@ -68,18 +68,18 @@ class MymeetingTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.myMeetings.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("areaCell", forIndexPath: indexPath) as! AreaTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "areaCell", for: indexPath) as! AreaTableViewCell
         let m = myMeetings[indexPath.row]
         cell.iconImageView.image = UIImage(named: "meetingroom")
         cell.nameLabel.text = m.meetingTitle
@@ -87,7 +87,7 @@ class MymeetingTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 

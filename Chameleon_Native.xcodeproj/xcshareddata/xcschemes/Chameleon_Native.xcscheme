@@ -48,6 +48,16 @@
                ReferencedContainer = "container:Chameleon_Native.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1863D49A1D2CB5BE003491E6"
+               BuildableName = "ChameleonTests.xctest"
+               BlueprintName = "ChameleonTests"
+               ReferencedContainer = "container:Chameleon_Native.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

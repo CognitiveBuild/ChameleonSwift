@@ -17,30 +17,30 @@ class MeetingRoomTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Regist cel
-        self.tableView.registerNib(UINib(nibName: "TodayCell",bundle: nil), forCellReuseIdentifier: "todayCell")
-        self.tableView.registerNib(UINib(nibName:"MeetingTimeCell",bundle:nil), forCellReuseIdentifier: "mtCell")
+        self.tableView.register(UINib(nibName: "TodayCell",bundle: nil), forCellReuseIdentifier: "todayCell")
+        self.tableView.register(UINib(nibName:"MeetingTimeCell",bundle:nil), forCellReuseIdentifier: "mtCell")
         self.tableView.backgroundColor = UIColor(hexString: "#f0f1f3")
 
         self.title = device.roomName
         let replyBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        replyBtn.setImage(UIImage(named: "radar"), forState: UIControlState.Normal)
-        replyBtn.addTarget(self, action: #selector(backToHome), forControlEvents:  UIControlEvents.TouchUpInside)
+        replyBtn.setImage(UIImage(named: "radar"), for: UIControlState())
+        replyBtn.addTarget(self, action: #selector(backToHome), for:  UIControlEvents.touchUpInside)
         let item = UIBarButtonItem(customView: replyBtn)
         self.navigationItem.rightBarButtonItem = item
         self.meetings = device.meetings
         self.bookButton.layer.cornerRadius = 25
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         
     }
     func backToHome() {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    @IBAction func bookMeetingAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("showBookPage", sender: device)
+    @IBAction func bookMeetingAction(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "showBookPage", sender: device)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,12 +49,12 @@ class MeetingRoomTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }else{
@@ -63,17 +63,17 @@ class MeetingRoomTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let nSection = indexPath.section
         let nRow = indexPath.row
         if nSection == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("todayCell", forIndexPath: indexPath) as! TodayCell
-            let todayFormatter = NSDateFormatter()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "todayCell", for: indexPath) as! TodayCell
+            let todayFormatter = DateFormatter()
             todayFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            cell.todayLabel.text = todayFormatter.stringFromDate(NSDate())
+            cell.todayLabel.text = todayFormatter.string(from: Date())
             return cell
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("mtCell", forIndexPath: indexPath) as! MeetingTimeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mtCell", for: indexPath) as! MeetingTimeCell
             let meeting = meetings[nRow]
             cell.timeLabel.text = "\(meeting.startTime) - \(meeting.endTime)"
             cell.decLabel.text = meeting.bookBy
@@ -82,34 +82,34 @@ class MeetingRoomTableViewController: UITableViewController {
         }
 
     }
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 1
         }else{
             return 20
         }
     }
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
         }else{
             let v = UIView()
             v.backgroundColor = UIColor(hexString: "#f0f1f3")
-            v.frame = CGRectMake(0, 0, tableView.frame.size.width, 20)
+            v.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20)
             return v
         }
 
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 60
         }else{
             return 60
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? BookMeetingTableViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? BookMeetingTableViewController {
             vc.device = self.device
         }
     }
